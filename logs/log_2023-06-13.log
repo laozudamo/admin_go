@@ -1,1 +1,0 @@
-2023-06-14T00:00:25.151+0800	INFO	middlewares/logger.go:32	/user/login	{"statusxixixixi": 400, "method": "POST", "path": "/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "37.082041ms"}
