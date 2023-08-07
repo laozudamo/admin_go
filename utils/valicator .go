@@ -16,11 +16,11 @@ func HandleValidatorError(c *gin.Context, err error) {
 	//如何返回错误信息
 	errs, ok := err.(validator.ValidationErrors)
 	if !ok {
-		response.Err(c, http.StatusBadRequest, 500, err.Error(), "")
+		response.Err(c, http.StatusBadRequest, 400, err.Error(), "")
 		return
 	}
 	if errs != nil {
-		response.Err(c, http.StatusBadRequest, 500, err.Error(), removeTopStruct(errs.Translate(global.Trans)))
+		response.Err(c, http.StatusBadRequest, 400, err.Error(), removeTopStruct(errs.Translate(global.Trans)))
 		return
 	}
 }
