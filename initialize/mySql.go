@@ -2,6 +2,7 @@ package initialize
 
 import (
 	"admin_go/global"
+	"admin_go/models"
 	"fmt"
 
 	"gorm.io/driver/mysql"
@@ -14,5 +15,8 @@ func InitMysqlDB() {
 		mysqlInfo.Name, mysqlInfo.Password, mysqlInfo.Host,
 		mysqlInfo.Port, mysqlInfo.DBName)
 	db, _ := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+
+	db.AutoMigrate(models.SysUser{}, models.SysRole{})
+
 	global.DB = db
 }

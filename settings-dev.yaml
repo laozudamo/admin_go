@@ -1,13 +1,13 @@
 app:
   env: "local"
-  port: 8888
-  app_name: "gin-app"
+  port: 8000
+  app_name: "Addmin_Go"
   app_url: "http://localhost"
 
 log:
   level: 'info'
-  root_dir: './logs'
-  filename: 'app.log'
+  root_dir: './logs/'
+  filename: 'app_logs'
   format: ''
   show_line: true
   max_backups: 3
@@ -16,18 +16,11 @@ log:
   compress: true
 
 mysql:
-  driver: 'mysql'
-  host: '127.0.0.1'
-  port: 8306
-  database: 'admin_go'
-  username: 'root'
-  password: 'root123456'
-  charset: 'utf8mb4'
-  max_idle_conns: 10
-  max_open_conns: 100
-  log_mode: 'info'
-  enable_file_log_writer: true
-  log_filename: 'sql.log'
+  name: "root"
+  host: "localhost"
+  port: 3306
+  password: "root123456"
+  dbName: "admin_go"
 
 jwt:
   secret: '3Bde3BGEbYqtqyEUzW3ry8jKFcaPH17fRmTmqE7MDr05Lwj95uruRKrrkb44TJ4s'

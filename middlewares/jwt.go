@@ -16,7 +16,7 @@ import (
 type CustomClaims struct {
 	ID    uint //
 	Name  string
-	Roles []models.Role
+	Roles []models.SysRole
 	// NickName    string //
 	// AuthorityId uint //
 	jwt.StandardClaims

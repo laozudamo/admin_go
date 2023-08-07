@@ -1,25 +1,29 @@
 package initialize
 
 import (
+	"admin_go/config"
+	"admin_go/global"
 	"fmt"
-	"os"
 
 	"github.com/spf13/viper"
 )
 
 func InitConfig() {
-	// 设置配置文件路径
-	config := "config.yaml"
-
-	if configEnv := os.Getenv("VIPER_CONFIG"); configEnv != "" {
-		config = configEnv
-	}
-	// 初始化 viper 配置
+	// 实例化viper
 	v := viper.New()
-	v.SetConfigFile(config)
+	v.SetConfigFile("./settings-dev.yaml")
+
 	if err := v.ReadInConfig(); err != nil {
-		panic(fmt.Errorf("read config failed: %s \n", err))
+		panic(err)
 	}
-	// 监听配置文件 并更新
+
+	serverConfig := config.ServerConfig{}
+	//给serverConfig初始值
+	if err := v.Unmarshal(&serverConfig); err != nil {
+		panic(err)
+	}
+	fmt.Print(serverConfig)
+
+	global.Settings = serverConfig
 
 }

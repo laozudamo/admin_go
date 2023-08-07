@@ -1,0 +1,1 @@
+2023-08-07T10:12:35.987+0800	INFO	middlewares/logger.go:32	/catpchas	{"statusxixixixi": 404, "method": "GET", "path": "/catpchas", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.459µs"}
