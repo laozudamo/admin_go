@@ -13,6 +13,6 @@ func InitRole(Router *gin.RouterGroup) {
 		router.PUT("", controller.UpdateRole)
 		router.DELETE("", controller.DeleteRole)
 		router.GET("", controller.GetRole)
-		router.GET("/list", controller.GetRole)
+		router.GET("/list", controller.GetRoleList)
 	}
 }

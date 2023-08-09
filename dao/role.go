@@ -3,6 +3,7 @@ package dao
 import (
 	"admin_go/global"
 	"admin_go/models"
+	"fmt"
 )
 
 // RoleCreat 创建角色
@@ -36,14 +37,18 @@ func RoleUpdate(role *models.SysRole) error {
 	return nil
 }
 
-func RoleDelete(ids []uint) error {
+func RoleDelete(ids []int) error {
 	if err := global.DB.Delete(&models.SysRole{}, ids).Error; err != nil {
+		fmt.Println(err)
 		return err
 	}
 	return nil
 }
 
-// func RoleList(params map[string]interface{}) ([]models.SysRole, error) {
-// 	// var lists []models.SysRole
-
-// }
+func RoleList(page int, pageSize int, name string, roleKey string, status int) ([]models.SysRole, error) {
+	var roles []models.SysRole
+	if err := global.DB.Limit(pageSize).Offset((page - 1) * pageSize).Preload("SysMenu").Find(&roles).Error; err != nil {
+		return nil, err
+	}
+	return roles, nil
+}
