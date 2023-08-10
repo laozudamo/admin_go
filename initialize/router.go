@@ -19,6 +19,7 @@ func InitRouter() *gin.Engine {
 	routers.InitCatpcha(ApiGroup)
 	routers.InitUpload(ApiGroup)
 	routers.InitRole(ApiGroup)
+	routers.InitMenu(ApiGroup)
 
 	return Router
 }
