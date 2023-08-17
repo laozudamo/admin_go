@@ -31,7 +31,17 @@ func RoleFindByName(key string) (*models.SysRole, error) {
 }
 
 func RoleUpdate(role *models.SysRole) error {
-	if err := global.DB.Save(role).Error; err != nil {
+	// role :=
+	// roles := models.SysRole{}
+	// m := map[string]interface{}{
+	// 	"role_name": role.RoleName,
+	// 	"role_key":  role.RoleKey,
+	// 	"status":    role.Status,
+	// 	"remark":    role.Remark,
+	// 	"sys_menu":  role.SysMenu,
+	// 	"sort":      role.Sort,
+	// }
+	if err := global.DB.Model(&models.SysRole{}).Where("id = ?", role.ID).Updates(role).Error; err != nil {
 		return err
 	}
 	return nil

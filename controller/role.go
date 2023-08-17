@@ -67,9 +67,15 @@ func UpdateRole(c *gin.Context) {
 	temRole, _ := dao.RoleFindById(strconv.Itoa(int(role.ID)))
 
 	if temRole == nil {
-		response.Err(c, 500, 500, "没有找到该数据", nil)
+		response.Err(c, 500, 500, "没有找到该用户", nil)
 		return
 	}
+
+	if err := dao.RoleUpdate(&role); err != nil {
+		response.Err(c, 500, 500, "更新失败", nil)
+		return
+	}
+	response.Success(c, 200, "更新成功", nil)
 }
 
 type Params struct {
