@@ -6,6 +6,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// test git
 func main() {
 	// 初始化配置文件
 	initialize.InitConfig()
