@@ -22,7 +22,7 @@ func InitMysqlDB() {
 	sqlDB.SetMaxOpenConns(100)          // 设置最大连接数
 	sqlDB.SetConnMaxLifetime(time.Hour) // 连接池链接设置最大可复用时间
 
-	db.AutoMigrate(models.SysUser{}, models.SysRole{}, models.Teacher{}, models.Student{})
+	db.AutoMigrate(models.SysUser{}, models.SysRole{})
 
 	global.DB = db
 }
