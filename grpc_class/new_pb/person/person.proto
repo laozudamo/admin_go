@@ -1,0 +1,32 @@
+syntax = "proto3"; // 告诉编译器使用proto3语法
+
+package person;
+
+//option go_package = "包路径(从mod下开始写);别名";
+
+option  go_package = "admin_go/grpc_class/new_pb/person;person";
+
+message Person {
+  // 先声明类型，再声明字段名 类型+字段名
+  string name = 1;
+  int32 age = 2;
+  bool sex = 3;
+  repeated string test_arr = 4;
+  map<string, string> test_map = 5;
+}
+/*
+嵌套类型
+message Home {
+  repeated Person person = 1;
+  message V {
+    string  name = 1;
+  }
+}*/
+
+/*
+  切片的关键字 repeated
+*/
+
+/*
+  map的关键字 map
+*/
