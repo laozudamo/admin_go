@@ -20,6 +20,5 @@ func InitRouter() *gin.Engine {
 	routers.InitUpload(ApiGroup)
 	routers.InitRole(ApiGroup)
 	routers.InitMenu(ApiGroup)
-
 	return Router
 }

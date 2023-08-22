@@ -16,7 +16,6 @@ func InitConfig() {
 	if err := v.ReadInConfig(); err != nil {
 		panic(err)
 	}
-
 	serverConfig := config.ServerConfig{}
 	//给serverConfig初始值
 	if err := v.Unmarshal(&serverConfig); err != nil {
