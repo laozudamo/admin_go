@@ -21,6 +21,6 @@ func main() {
 	defer conn.Close()
 
 	client := hello_rpc.NewHelloGrpcClient(conn)
-	req, _ := client.SayHi(context.Background(), &hello_rpc.Req{Msg: "客户端发送RPC数据"})
+	req, _ := client.SayHi(context.Background(), &hello_rpc.Req{Msg: "客户端发送"})
 	println(req.GetMsg())
 }
