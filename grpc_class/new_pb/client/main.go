@@ -4,6 +4,7 @@ import (
 	"admin_go/grpc_class/new_pb/person"
 	"context"
 	"fmt"
+	"log"
 	"sync"
 	"time"
 
@@ -41,7 +42,8 @@ func streamIn() {
 			// 结束,接收服务端数据
 			res, err := c.CloseAndRecv()
 			if err != nil {
-				panic(err)
+				log.Fatalf("Failed to load TLS certificates: %v", err)
+				return
 			}
 
 			fmt.Println(res.GetName(), res.GetAge())

@@ -17,7 +17,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
 	defer conn.Close()
 
 	client := hello_rpc.NewHelloGrpcClient(conn)
