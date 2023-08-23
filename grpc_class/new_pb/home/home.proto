@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-package home;
-
-option go_package = "admin_go/grpc_class/new_pb/person;home";
-
-message Home {
-  string  homeNumber = 1;
-}
