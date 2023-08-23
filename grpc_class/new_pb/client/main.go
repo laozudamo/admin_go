@@ -4,6 +4,7 @@ import (
 	"admin_go/grpc_class/new_pb/person"
 	"context"
 	"fmt"
+	"sync"
 	"time"
 
 	"google.golang.org/grpc"
@@ -87,4 +88,49 @@ func streamOut() {
 
 // 流式调用
 func streamInOut() {
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	conn, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	defer conn.Close()
+
+	client := person.NewSearchServiceClient(conn)
+
+	c, err := client.SearchInOut(context.Background())
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	go func() {
+		for {
+			err := c.Send(&person.PersonReq{
+				Name: "这是发送的信息",
+				Age:  1,
+			})
+			if err != nil {
+				wg.Done()
+				break
+			}
+			time.Sleep(time.Second)
+		}
+	}()
+
+	go func() {
+		for {
+			res, err := c.Recv()
+			if err != nil {
+				wg.Done()
+				break
+			}
+			fmt.Println(res.GetName(), res.GetAge())
+		}
+	}()
+
+	wg.Wait()
 }

@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"sync"
 	"time"
 
 	"google.golang.org/grpc"
@@ -53,6 +54,42 @@ func (*PersonService) SearchOut(req *person.PersonReq, server person.SearchServi
 	return nil
 }
 func (*PersonService) SearchInOut(server person.SearchService_SearchInOutServer) error {
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	ch := make(chan string)
+
+	i := 0
+	go func() {
+		for {
+			i++
+			res, _ := server.Recv()
+			if i > 10 {
+				ch <- "结束"
+				wg.Done()
+				break
+			}
+			ch <- res.GetName()
+		}
+	}()
+
+	for {
+		s := <-ch
+		if s == "结束" {
+			wg.Done()
+			break
+		}
+
+		server.Send(&person.PersonRes{
+			Name: <-ch,
+			Age:  1,
+		})
+
+	}
+
+	//}()
+
+	wg.Wait()
 	return nil
 }
 
