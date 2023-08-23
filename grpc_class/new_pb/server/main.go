@@ -5,7 +5,6 @@ import (
 	"context"
 	"fmt"
 	"net"
-	"sync"
 	"time"
 
 	"google.golang.org/grpc"
@@ -54,37 +53,6 @@ func (*PersonService) SearchOut(req *person.PersonReq, server person.SearchServi
 	return nil
 }
 func (*PersonService) SearchInOut(server person.SearchService_SearchInOutServer) error {
-	var wg sync.WaitGroup // 定义一个同步等待的组
-	wg.Add(2)
-
-	go func() {
-		for {
-			res, err := server.Recv()
-			if err != nil {
-				wg.Done()
-				break
-			}
-			fmt.Println(res.GetName(), res.GetAge())
-		}
-	}()
-
-	go func() {
-		i := 0
-		for {
-			if i > 10 {
-				wg.Done()
-				break
-			}
-			server.Send(&person.PersonRes{
-				Name: "这是服务返回的数据",
-				Age:  int32(i),
-			})
-			i++
-			time.Sleep(time.Second)
-		}
-	}()
-
-	wg.Wait()
 	return nil
 }
 

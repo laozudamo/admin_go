@@ -4,7 +4,6 @@ import (
 	"admin_go/grpc_class/new_pb/person"
 	"context"
 	"fmt"
-	"sync"
 	"time"
 
 	"google.golang.org/grpc"
@@ -86,60 +85,6 @@ func streamOut() {
 	}
 }
 
+// 流式调用
 func streamInOut() {
-
-	var wg sync.WaitGroup // 定义一个同步等待的组
-	wg.Add(2)             // 2个任务
-
-	conn, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	defer conn.Close()
-
-	client := person.NewSearchServiceClient(conn)
-
-	c, err := client.SearchInOut(context.Background())
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	go func() {
-		i := 1
-		for {
-			if i > 10 {
-				break
-				defer wg.Done()
-			}
-
-			c.Send(&person.PersonReq{
-				Name: "我是传递过来的数据",
-				Age:  int32(i),
-			})
-			i++
-			time.Sleep(time.Second)
-		}
-
-		fmt.Println("协程1执行")
-
-	}()
-
-	go func() {
-		for {
-			res, err := c.Recv()
-			if err != nil {
-				break
-				defer wg.Done()
-			}
-			fmt.Println(res.GetName(), res.GetAge())
-		}
-
-		fmt.Println("协程2执行")
-	}()
-
-	wg.Wait() // 等待所有协程执行完毕
 }
