@@ -1,9 +1,11 @@
 syntax = "proto3"; // 告诉编译器使用proto3语法
 
+//package 包名
 package person;
 
-//option go_package = "包路径(从mod下开始写);别名";
+import "google/api/annotations.proto";
 
+//option go_package = "包路径(从mod下开始写);别名";
 option  go_package = "admin_go/grpc_class/new_pb/person;person";
 
 message PersonReq {
@@ -48,9 +50,13 @@ message Home {
 */
 
 service SearchService {
-  rpc Search (PersonReq) returns (PersonRes); // traditional, 传统的 rpc;即刻响应的rpc
+  rpc Search (PersonReq) returns (PersonRes){
+    option(google.api.http) = {
+      post: "/v1/search/{name}",
+      body: "*"
+    };
+  }; // traditional, 传统的 rpc;即刻响应的rpc
   rpc SearchIn (stream PersonReq) returns (PersonRes); // stream, 流式的rpc;即刻响应的rpc // 传入的是流，返回的是单个
   rpc SearchOut (PersonReq) returns (stream PersonRes); // stream, 流式的rpc;即刻响应的rpc // 传入的是单个，返回的是流
   rpc SearchInOut (stream PersonReq) returns (stream PersonRes); // stream, 流式的rpc;即刻响应的rpc // 传入的是流，返回的是流
 }
-
