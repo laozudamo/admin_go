@@ -3,18 +3,18 @@ package utils
 import (
 	"admin_go/middlewares"
 	"admin_go/response"
+	"time"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-
-	"time"
 )
 
-func CreateToken(c *gin.Context, Id int) string {
+func CreateToken(c *gin.Context, Id int, RoleKey string) string {
 	//生成token信息
 	j := middlewares.NewJWT()
 	claims := middlewares.CustomClaims{
-		ID: uint(Id),
+		ID:      uint(Id),
+		RoleKey: RoleKey,
 		// NickName: NickName,
 		// AuthorityId: uint(Role),
 		StandardClaims: jwt.StandardClaims{

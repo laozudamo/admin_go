@@ -2,7 +2,6 @@ package middlewares
 
 import (
 	"admin_go/global"
-	"admin_go/models"
 	"admin_go/response"
 	"errors"
 	"fmt"
@@ -14,9 +13,9 @@ import (
 )
 
 type CustomClaims struct {
-	ID    uint //
-	Name  string
-	Roles []models.SysRole
+	ID      uint //
+	Name    string
+	RoleKey string
 	// NickName    string //
 	// AuthorityId uint //
 	jwt.StandardClaims

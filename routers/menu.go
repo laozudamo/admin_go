@@ -11,8 +11,8 @@ func InitMenu(Router *gin.RouterGroup) {
 	{
 		router.POST("", controller.CreatMenu)
 		// router.PUT("", controller.UpdateRole)
-		// router.DELETE("", controller.DeleteRole)
-		// router.GET("", controller.GetRole)
+		//router.DELETE("", controller.DeleteRole)
+		router.GET("", controller.GetMenu)
 		// router.GET("/list", controller.GetRoleList)
 	}
 }

@@ -1,8 +1,18 @@
 package controller
 
-import "github.com/gin-gonic/gin"
+import (
+	"admin_go/models/request"
+	"admin_go/utils"
+
+	"github.com/gin-gonic/gin"
+)
 
 func Login(c *gin.Context) {
+	loginForm := request.Login{}
+	if err := c.ShouldBind(&loginForm); err != nil {
+		utils.HandleValidatorError(c, err)
+		return
+	}
 
 }
 

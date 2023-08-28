@@ -12,6 +12,5 @@ func (CasbinModel) TableName() string {
 }
 
 func (c *CasbinModel) AddPolicy() error {
-
 	return nil
 }

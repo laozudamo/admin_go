@@ -6,7 +6,7 @@ import (
 
 type SysLoginLog struct {
 	gorm.Model
-	Username      string `json:"username" gorm:"size:128;comment:用户名"`
+	Username      string `json:"username" gorm:"size:128;comment:用户名" binding:"required"`
 	Status        string `json:"status" gorm:"size:4;comment:状态"`
 	Ipaddr        string `json:"ipaddr" gorm:"size:255;comment:ip地址"`
 	LoginLocation string `json:"loginLocation" gorm:"size:255;comment:归属地"`
