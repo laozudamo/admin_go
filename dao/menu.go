@@ -30,9 +30,9 @@ func MenuFindByName(path string) (*models.SysMenu, error) {
 }
 
 func MenuUpdate(Menu *models.SysMenu) error {
-	if err := global.DB.Save(Menu).Error; err != nil {
-		return err
-	}
+	//if err := global.DB.Save(Menu).Error; err != nil {
+	//	return err
+	//}
 	return nil
 }
 

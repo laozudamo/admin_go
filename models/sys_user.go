@@ -22,6 +22,7 @@ type SysUser struct {
 	DeptIds  []int  `json:"deptIds" gorm:"-"`
 	PostIds  []int  `json:"postIds" gorm:"-"`
 	RoleIds  []int  `json:"roleIds" gorm:"-"`
+	Salt     string `json:"-" gorm:"size:255;comment:盐"`
 	gorm.Model
 }
 
