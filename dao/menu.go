@@ -5,7 +5,7 @@ import (
 	"admin_go/models"
 )
 
-// MenuCreat 创建角色
+// MenuCreat 创建菜单
 func MenuCreat(Menu *models.SysMenu) error {
 	if err := global.DB.Create(&Menu).Error; err != nil {
 		return err
@@ -42,8 +42,3 @@ func MenuDelete(ids []uint) error {
 	}
 	return nil
 }
-
-// func MenuList(params map[string]interface{}) ([]models.SysMenu, error) {
-// 	// var lists []models.SysMenu
-
-// }

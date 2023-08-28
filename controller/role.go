@@ -102,8 +102,8 @@ func GetRoleList(c *gin.Context) {
 	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
 	pageSize, _ := strconv.Atoi(c.DefaultQuery("pageSize", "10"))
 	name := c.Query("name")
-	fmt.Printf("name: %v\n", name)
-	return
+	//fmt.Printf("name: %v\n", name)
+	//return
 	roleKey := c.Query("roleKey")
 	status, _ := strconv.Atoi(c.Query("status"))
 	fmt.Println(page, pageSize, name, roleKey, status)

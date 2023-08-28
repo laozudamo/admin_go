@@ -9,12 +9,11 @@ type SysMenu struct {
 	Path      string    `json:"path" gorm:"size:128;"`
 	MenuType  string    `json:"menuType" gorm:"size:1;"`
 	Action    string    `json:"action" gorm:"size:16;"`
-	ParentId  int       `json:"parentId" gorm:"size:11;"` // 父菜单ID
-	Component string    `json:"component" gorm:"size:255;"`
+	ParentId  uint      `json:"parentId" gorm:"size:11;"` // 父菜单ID
 	Sort      int       `json:"sort" gorm:"size:4;"`
 	Visible   string    `json:"visible" gorm:"size:1;"`
 	DataScope string    `json:"dataScope" gorm:"-"`
-	SysRoleId int       `gorm:"-"`
+	SysRoleId uint      `gorm:"-"`
 	Children  []SysMenu `json:"children,omitempty" gorm:"-"`
 	gorm.Model
 }
