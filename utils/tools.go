@@ -1,8 +1,6 @@
 package utils
 
 import (
-	"crypto/sha256"
-	"encoding/base64"
 	"fmt"
 	"time"
 )
@@ -14,17 +12,6 @@ func GetNowFormatTodayTime() string {
 		now.Day())
 
 	return dateStr
-}
-
-func HashString(s string) string {
-
-	// 计算SHA256哈希值
-	hash := sha256.Sum256([]byte(s))
-
-	// 对哈希值进行base64编码
-	encoded := base64.StdEncoding.EncodeToString(hash[:])
-
-	return encoded
 }
 
 func ParseTime(strTime string) (*time.Time, bool) {
