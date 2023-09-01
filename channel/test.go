@@ -15,15 +15,17 @@ func main() {
 	//}
 	//Check(u)
 	//check(u)
+	//
+	//s := Student{
+	//	Class: "21",
+	//	User: User{
+	//		Name: "tom",
+	//		Age:  20,
+	//	},
+	//}
+	//reflectFunc(&s)
 
-	s := Student{
-		Class: "21",
-		User: User{
-			Name: "tom",
-			Age:  20,
-		},
-	}
-	reflectFunc(&s)
+	TheSync()
 
 }
 
@@ -144,15 +146,115 @@ func check(v interface{}) {
 
 // 反射
 func reflectFunc(inter interface{}) {
-	t := reflect.TypeOf(inter)
-	ty := t.Kind()
+	//t := reflect.TypeOf(inter)
+	//ty := t.Kind()
+	//
+	//switch ty {
+	//case reflect.Struct:
+	//	fmt.Println("asa")
+	//case reflect.Pointer:
+	//	fmt.Println("pointer")
+	//default:
+	//	fmt.Println("都不是")
+	//}
+	v := reflect.ValueOf(inter)
+	e := v.Elem()
+	e.FieldByName("Name").SetString("jack")
+	fmt.Println(v)
+}
 
-	switch ty {
-	case reflect.Struct:
-		fmt.Println("asa")
-	case reflect.Pointer:
-		fmt.Println("pointer")
-	default:
-		fmt.Println("都不是")
-	}
+/*
+sync 锁
+
+// 记住所有的锁都使用地址
+*/
+func TheSync() {
+	// 互斥锁
+	//l := &sync.Mutex{}
+	//var wg sync.WaitGroup
+	//wg.Add(2)
+	// 读写锁
+	//l := &sync.RWMutex{}
+
+	//go lockfun(l, &wg)
+	/*
+		lock.Lock() 会阻塞，直到获取到锁
+		lock.Unlock() 会释放锁
+	*/
+	//go lockfun(l, &wg)
+
+	//wg.Wait()
+	//
+	//go ReadLockFun(l)
+	//
+	//go ReadLockFun(l)
+	//
+	//time.Sleep(time.Second * 10)
+
+	// once只读写一次
+	//o := &sync.Once{}
+	//for i := 0; i < 10; i++ {
+	//	o.Do(func() {
+	//		fmt.Println("do once")
+	//	})
+	//}
+	syncMap()
+}
+
+/*
+使用的是同一把锁，所以会阻塞 互斥锁
+*/
+func lockfun(lock *sync.Mutex, wg *sync.WaitGroup) {
+	lock.Lock() // 写的时候会排斥其他锁
+	fmt.Println("lockfun")
+	time.Sleep(time.Second)
+	lock.Unlock()
+	wg.Done()
+}
+
+func ReadLockFun(lock *sync.RWMutex) {
+	lock.RLock() // 在读取的时候 不会阻塞其他的读锁 但是在写的时候会排斥其他锁
+	fmt.Println("lockfun")
+	time.Sleep(time.Second)
+	lock.RUnlock()
+}
+
+// map 并发字典 store, load, delete, loadOrStore, range
+
+func syncMap() {
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	//m := sync.Map{}
+	//go func() {
+	//	for i := 0; i < 10; i++ {
+	//		m.Store(i, i)
+	//	}
+	//	wg.Done()
+	//}()
+	//go func() {
+	//	for i := 0; i < 10; i++ {
+	//		fmt.Println(m.Load(i))
+	//	}
+	//	wg.Done()
+	//}()
+
+	m := &sync.Map{}
+
+	go func() {
+		//delete(m, "1")
+		m.Store("1", "1")
+		m.LoadOrStore("3", "2")
+		wg.Done()
+	}()
+
+	go func() {
+		m.Range(func(key, value interface{}) bool {
+			fmt.Println(key, value)
+			return true
+		})
+		wg.Done()
+	}()
+
+	wg.Wait()
 }
