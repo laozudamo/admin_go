@@ -1,0 +1,99 @@
+2023-08-28T11:14:07.208+0800	INFO	middlewares/logger.go:32	/role	{"statusxixixixi": 500, "method": "GET", "path": "/role", "query": "id=1", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "49.667625ms"}
+2023-08-28T11:15:02.314+0800	INFO	middlewares/logger.go:32	/role	{"statusxixixixi": 500, "method": "POST", "path": "/role", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "9.4305ms"}
+2023-08-28T15:35:09.107+0800	ERROR	middlewares/logger.go:75	[Recovery from panic]	{"error": "record not found", "request": "POST /menu HTTP/1.1\r\nHost: localhost:8000\r\nAccept: */*\r\nAccept-Encoding: gzip, deflate, br\r\nConnection: keep-alive\r\nContent-Length: 57\r\nContent-Type: application/json\r\nUser-Agent: Apifox/1.0.0 (https://www.apifox.cn)\r\n\r\n", "stack": "goroutine 12 [running]:\nruntime/debug.Stack()\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/runtime/debug/stack.go:24 +0x64\nadmin_go/middlewares.GinRecovery.func1.1()\n\t/Users/shelby/development/go/admin_go/middlewares/logger.go:78 +0x25c\npanic({0x102e4af00, 0x1400021f2b0})\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/runtime/panic.go:884 +0x1f4\nadmin_go/actions.IndexAction({0x102e0a180, 0x1400013d7a0}, {0x102c96b0b, 0x2}, {0x102da75c8, 0x1})\n\t/Users/shelby/development/go/admin_go/actions/index.go:10 +0x178\nadmin_go/controller.CreatMenu(0x140001c3800)\n\t/Users/shelby/development/go/admin_go/controller/menu.go:19 +0x98\ngithub.com/gin-gonic/gin.(*Context).Next(...)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174\nadmin_go/middlewares.GinRecovery.func1(0x140001c3800)\n\t/Users/shelby/development/go/admin_go/middlewares/logger.go:89 +0x74\ngithub.com/gin-gonic/gin.(*Context).Next(...)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174\nadmin_go/middlewares.GinLogger.func1(0x140001c3800)\n\t/Users/shelby/development/go/admin_go/middlewares/logger.go:26 +0x84\ngithub.com/gin-gonic/gin.(*Context).Next(...)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174\ngithub.com/gin-gonic/gin.CustomRecoveryWithWriter.func1(0x140001c3800)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/recovery.go:102 +0x7c\ngithub.com/gin-gonic/gin.(*Context).Next(...)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174\ngithub.com/gin-gonic/gin.LoggerWithConfig.func1(0x140001c3800)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/logger.go:240 +0xac\ngithub.com/gin-gonic/gin.(*Context).Next(...)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174\ngithub.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0x140006024e0, 0x140001c3800)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:620 +0x51c\ngithub.com/gin-gonic/gin.(*Engine).ServeHTTP(0x140006024e0, {0x102f14cb0?, 0x1400013e380}, 0x140001c3700)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:576 +0x1e4\nnet/http.serverHandler.ServeHTTP({0x102f131b0?}, {0x102f14cb0, 0x1400013e380}, 0x140001c3700)\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/net/http/server.go:2936 +0x2c0\nnet/http.(*conn).serve(0x14000202750, {0x102f15688, 0x14000362720})\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/net/http/server.go:1995 +0x518\ncreated by net/http.(*Server).Serve\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/net/http/server.go:3089 +0x4e8\n"}
+admin_go/middlewares.GinRecovery.func1.1
+	/Users/shelby/development/go/admin_go/middlewares/logger.go:75
+runtime.gopanic
+	/opt/homebrew/Cellar/go/1.20.2/libexec/src/runtime/panic.go:884
+admin_go/actions.IndexAction
+	/Users/shelby/development/go/admin_go/actions/index.go:10
+admin_go/controller.CreatMenu
+	/Users/shelby/development/go/admin_go/controller/menu.go:19
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+admin_go/middlewares.GinRecovery.func1
+	/Users/shelby/development/go/admin_go/middlewares/logger.go:89
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+admin_go/middlewares.GinLogger.func1
+	/Users/shelby/development/go/admin_go/middlewares/logger.go:26
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/logger.go:240
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:620
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:576
+net/http.serverHandler.ServeHTTP
+	/opt/homebrew/Cellar/go/1.20.2/libexec/src/net/http/server.go:2936
+net/http.(*conn).serve
+	/opt/homebrew/Cellar/go/1.20.2/libexec/src/net/http/server.go:1995
+2023-08-28T15:35:09.108+0800	INFO	middlewares/logger.go:32	/menu	{"statusxixixixi": 500, "method": "POST", "path": "/menu", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "5.427084ms"}
+2023-08-28T16:55:45.950+0800	INFO	middlewares/logger.go:32	/menu	{"statusxixixixi": 500, "method": "POST", "path": "/menu", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "5.666125ms"}
+2023-08-28T16:59:04.924+0800	INFO	middlewares/logger.go:32	/menu	{"statusxixixixi": 500, "method": "POST", "path": "/menu", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "6.172583ms"}
+2023-08-28T17:01:00.501+0800	INFO	middlewares/logger.go:32	/menu	{"statusxixixixi": 500, "method": "POST", "path": "/menu", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "5.090791ms"}
+2023-08-28T17:03:34.554+0800	INFO	middlewares/logger.go:32	/menu	{"statusxixixixi": 500, "method": "POST", "path": "/menu", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "5.435875ms"}
+2023-08-28T17:05:06.723+0800	ERROR	middlewares/logger.go:75	[Recovery from panic]	{"error": "reflect: reflect.Value.SetString using unaddressable value", "request": "POST /menu HTTP/1.1\r\nHost: localhost:8000\r\nAccept: */*\r\nAccept-Encoding: gzip, deflate, br\r\nConnection: keep-alive\r\nContent-Length: 66\r\nContent-Type: application/json\r\nUser-Agent: Apifox/1.0.0 (https://www.apifox.cn)\r\n\r\n", "stack": "goroutine 24 [running]:\nruntime/debug.Stack()\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/runtime/debug/stack.go:24 +0x64\nadmin_go/middlewares.GinRecovery.func1.1()\n\t/Users/shelby/development/go/admin_go/middlewares/logger.go:78 +0x5e8\npanic({0x1009b95c0, 0x140003aa350})\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/runtime/panic.go:890 +0x21c\nreflect.flag.mustBeAssignableSlow(0x98)\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/reflect/value.go:262 +0x9c\nreflect.flag.mustBeAssignable(0x98)\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/reflect/value.go:249 +0x60\nreflect.Value.SetString({0x1009b95c0, 0x140004f6360, 0x98}, {0x1400036e0ea, 0x3})\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/reflect/value.go:2437 +0x34\ngorm.io/gorm/schema.(*Field).setupValuerAndSetter.func11({0x100aaa9d8, 0x140000d2120}, {0x100a7af80, 0x140004f6360, 0x99}, {0x10099a240, 0x1400000e030})\n\t/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/schema/field.go:801 +0x7d0\ngorm.io/gorm.(*DB).scanIntoStruct(0x140000c1920, {0x100aabbd0, 0x140004fa080}, {0x100a7af80, 0x140004f6360, 0x99}, {0x140004f01c0, 0xe, 0xe}, {0x1400015e000, ...}, ...)\n\t/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/scan.go:75 +0x438\ngorm.io/gorm.Scan({0x100aabbd0, 0x140004fa080}, 0x140000c1920, 0x0)\n\t/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/scan.go:328 +0x1518\ngorm.io/gorm/callbacks.Query(0x140000c1920)\n\t/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/callbacks/query.go:28 +0x204\ngorm.io/gorm.(*processor).Execute(0x140000ac2d0, 0x140000c1920)\n\t/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/callbacks.go:130 +0x5cc\ngorm.io/gorm.(*DB).First(0x140000c1920, {0x1009a41c0, 0x140003aa0e0}, {0x0, 0x0, 0x0})\n\t/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/finisher_api.go:129 +0x264\nadmin_go/actions.IndexAction({0x100a7af80, 0x140004f6360}, {0x10088b4e4, 0x4}, {0x1400036e066, 0x5})\n\t/Users/shelby/development/go/admin_go/actions/index.go:6 +0x168\nadmin_go/controller.CreatMenu(0x140004e6200)\n\t/Users/shelby/development/go/admin_go/controller/menu.go:19 +0x100\ngithub.com/gin-gonic/gin.(*Context).Next(0x140004e6200)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174 +0x98\nadmin_go/middlewares.GinRecovery.func1(0x140004e6200)\n\t/Users/shelby/development/go/admin_go/middlewares/logger.go:89 +0x84\ngithub.com/gin-gonic/gin.(*Context).Next(0x140004e6200)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174 +0x98\nadmin_go/middlewares.GinLogger.func1(0x140004e6200)\n\t/Users/shelby/development/go/admin_go/middlewares/logger.go:26 +0x8c\ngithub.com/gin-gonic/gin.(*Context).Next(0x140004e6200)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174 +0x98\ngithub.com/gin-gonic/gin.CustomRecoveryWithWriter.func1(0x140004e6200)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/recovery.go:102 +0x98\ngithub.com/gin-gonic/gin.(*Context).Next(0x140004e6200)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174 +0x98\ngithub.com/gin-gonic/gin.LoggerWithConfig.func1(0x140004e6200)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/logger.go:240 +0xb4\ngithub.com/gin-gonic/gin.(*Context).Next(0x140004e6200)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174 +0x98\ngithub.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0x140004829c0, 0x140004e6200)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:620 +0x354\ngithub.com/gin-gonic/gin.(*Engine).ServeHTTP(0x140004829c0, {0x100aaa070, 0x140004f0000}, 0x140004e6100)\n\t/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:576 +0xbc\nnet/http.serverHandler.ServeHTTP({0x14000600000}, {0x100aaa070, 0x140004f0000}, 0x140004e6100)\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/net/http/server.go:2936 +0x43c\nnet/http.(*conn).serve(0x140004d0750, {0x100aaa9a0, 0x140004b6f50})\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/net/http/server.go:1995 +0x14ec\ncreated by net/http.(*Server).Serve\n\t/opt/homebrew/Cellar/go/1.20.2/libexec/src/net/http/server.go:3089 +0x7c0\n"}
+admin_go/middlewares.GinRecovery.func1.1
+	/Users/shelby/development/go/admin_go/middlewares/logger.go:75
+runtime.gopanic
+	/opt/homebrew/Cellar/go/1.20.2/libexec/src/runtime/panic.go:890
+reflect.flag.mustBeAssignableSlow
+	/opt/homebrew/Cellar/go/1.20.2/libexec/src/reflect/value.go:262
+reflect.flag.mustBeAssignable
+	/opt/homebrew/Cellar/go/1.20.2/libexec/src/reflect/value.go:249
+reflect.Value.SetString
+	/opt/homebrew/Cellar/go/1.20.2/libexec/src/reflect/value.go:2437
+gorm.io/gorm/schema.(*Field).setupValuerAndSetter.func11
+	/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/schema/field.go:801
+gorm.io/gorm.(*DB).scanIntoStruct
+	/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/scan.go:75
+gorm.io/gorm.Scan
+	/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/scan.go:328
+gorm.io/gorm/callbacks.Query
+	/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/callbacks/query.go:28
+gorm.io/gorm.(*processor).Execute
+	/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/callbacks.go:130
+gorm.io/gorm.(*DB).First
+	/Users/shelby/goWorkEnv/pkg/mod/gorm.io/gorm@v1.25.2/finisher_api.go:129
+admin_go/actions.IndexAction
+	/Users/shelby/development/go/admin_go/actions/index.go:6
+admin_go/controller.CreatMenu
+	/Users/shelby/development/go/admin_go/controller/menu.go:19
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+admin_go/middlewares.GinRecovery.func1
+	/Users/shelby/development/go/admin_go/middlewares/logger.go:89
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+admin_go/middlewares.GinLogger.func1
+	/Users/shelby/development/go/admin_go/middlewares/logger.go:26
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/logger.go:240
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:620
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/shelby/goWorkEnv/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:576
+net/http.serverHandler.ServeHTTP
+	/opt/homebrew/Cellar/go/1.20.2/libexec/src/net/http/server.go:2936
+net/http.(*conn).serve
+	/opt/homebrew/Cellar/go/1.20.2/libexec/src/net/http/server.go:1995
+2023-08-28T17:05:06.728+0800	INFO	middlewares/logger.go:32	/menu	{"statusxixixixi": 500, "method": "POST", "path": "/menu", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "8.125875ms"}
+2023-08-28T21:54:07.615+0800	INFO	middlewares/logger.go:32	/login	{"statusxixixixi": 404, "method": "POST", "path": "/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "750ns"}
+2023-08-28T21:55:30.547+0800	INFO	middlewares/logger.go:32	/users/login	{"statusxixixixi": 400, "method": "POST", "path": "/users/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "195.708µs"}
+2023-08-28T21:56:09.586+0800	INFO	middlewares/logger.go:32	/users/login	{"statusxixixixi": 500, "method": "POST", "path": "/users/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "4.587584ms"}
