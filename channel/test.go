@@ -25,7 +25,9 @@ func main() {
 	//}
 	//reflectFunc(&s)
 
-	TheSync()
+	//TheSync()
+	//theCond()
+	testLock()
 
 }
 
@@ -222,8 +224,8 @@ func ReadLockFun(lock *sync.RWMutex) {
 // map 并发字典 store, load, delete, loadOrStore, range
 
 func syncMap() {
-	var wg sync.WaitGroup
-	wg.Add(2)
+	//var wg sync.WaitGroup
+	//wg.Add(2)
 
 	//m := sync.Map{}
 	//go func() {
@@ -241,20 +243,96 @@ func syncMap() {
 
 	m := &sync.Map{}
 
+	//go func() {
+	//delete(m, "1")
+	m.Store("1", "1")
+	m.LoadOrStore("3", "2")
+	//wg.Done()
+	//}()
+
+	//go func() {
+	m.Range(func(key, value interface{}) bool {
+		fmt.Println(key, value)
+		time.Sleep(time.Second)
+		return true
+	})
+	//wg.Done()
+	//}()
+
+	//wg.Wait()
+}
+
+// 并发池
+func thePool() {
+	p := &sync.Pool{}
+	p.Put("1")
+	p.Put("2")
+	p.Put("3")
+	p.Put("4")
+	p.Put("5")
+	for i := 0; i < 6; i++ {
+		fmt.Println(p.Get())
+	}
+}
+
+// cond
+
+func theCond() {
+	co := sync.NewCond(&sync.Mutex{})
+	//co.L.Lock()
+	//co.Wait()
+	//co.Wait()
+	//co.Wait()
+	//co.L.Unlock()
+	//co.Signal() // 通知co完成一个wait
+	//co.Broadcast() // 通知co完成所有的wait
+
+	var wg sync.WaitGroup
+	wg.Add(2)
+
 	go func() {
-		//delete(m, "1")
-		m.Store("1", "1")
-		m.LoadOrStore("3", "2")
+		co.L.Lock()
+		fmt.Println("lock1")
+		co.Wait()
+		fmt.Println("unlock1")
+		co.L.Unlock()
 		wg.Done()
 	}()
 
 	go func() {
-		m.Range(func(key, value interface{}) bool {
-			fmt.Println(key, value)
-			return true
-		})
+		co.L.Lock()
+		fmt.Println("lock2")
+		co.Wait()
+		fmt.Println("unlock2")
+		co.L.Unlock()
 		wg.Done()
 	}()
+
+	co.Broadcast()
+	wg.Wait()
+}
+
+func testLock() {
+	l := &sync.Mutex{}
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	go func() {
+		l.Lock()
+		time.Sleep(time.Second * 1)
+		fmt.Println("lock1")
+		l.Unlock()
+		wg.Done()
+	}()
+	go func() {
+		l.Lock()
+		time.Sleep(time.Second * 1)
+		fmt.Println("lock2")
+		l.Unlock()
+		wg.Done()
+	}()
+	fmt.Println("jack")
 
 	wg.Wait()
+
 }
