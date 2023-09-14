@@ -9,16 +9,21 @@ import (
 
 func InitRouter() *gin.Engine {
 	Router := gin.Default()
+
 	Router.Use(middlewares.Cors(), middlewares.GinLogger(), middlewares.GinRecovery(true))
 	// 图片路径 大小限制
 	Router.MaxMultipartMemory = 8 << 20 // 8 MiB
-	// Router.Static("/uploads", "./uploads")
+	// 静态文件
+	Router.Static("/uploads", "./uploads")
+	//Router.Static("/video", "./video")
+	Router.StaticFile("/video", "./video")
 
 	ApiGroup := Router.Group("/")
 	routers.InitUserRouter(ApiGroup)
 	routers.InitCatpcha(ApiGroup)
 	routers.InitUpload(ApiGroup)
 	routers.InitRole(ApiGroup)
+	routers.InitVideoRouter(ApiGroup)
 	routers.InitMenu(ApiGroup)
 	return Router
 }

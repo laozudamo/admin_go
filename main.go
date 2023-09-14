@@ -26,4 +26,5 @@ func main() {
 	if err != nil {
 		zap.L().Info("this is hello func", zap.String("error", "启动错误!"))
 	}
+
 }

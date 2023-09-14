@@ -1,31 +1,32 @@
 package utils
 
 import (
-	"crypto/rand"
-	"crypto/sha256"
-	"encoding/base64"
+	"crypto/md5"
+	"encoding/hex"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
-func GetPwd(pwd string) (string, string) {
-	salt := generateSalt()
-	passwordWithSalt := []byte(pwd + salt)
-	hash := sha256.Sum256(passwordWithSalt)
-	hashedPassword := base64.URLEncoding.EncodeToString(hash[:])
-	return hashedPassword, salt
+// BcryptHash 使用 bcrypt 对密码进行加密
+func BcryptHash(password string) string {
+	bytes, _ := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	return string(bytes)
 }
 
-func generateSalt() string {
-	salt := make([]byte, 16)
-	_, err := rand.Read(salt)
-	if err != nil {
-		panic(err)
-	}
-	return base64.URLEncoding.EncodeToString(salt)
+// BcryptCheck 对比明文密码和数据库的哈希值
+func BcryptCheck(password, hash string) bool {
+	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
+	return err == nil
 }
 
-func CheckPwd(pwd string, salt string, hashedPwd string) bool {
-	passwordWithSalt := []byte(pwd + salt)
-	hash := sha256.Sum256(passwordWithSalt)
-	hashedPassword := base64.URLEncoding.EncodeToString(hash[:])
-	return hashedPassword == hashedPwd
+//@author: [piexlmax](https://github.com/piexlmax)
+//@function: MD5V
+//@description: md5加密
+//@param: str []byte
+//@return: string
+
+func MD5V(str []byte, b ...byte) string {
+	h := md5.New()
+	h.Write(str)
+	return hex.EncodeToString(h.Sum(b))
 }

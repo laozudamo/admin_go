@@ -13,13 +13,6 @@ func Login(c *gin.Context) {
 		utils.HandleValidatorError(c, err)
 		return
 	}
-	//user := models.SysUser{
-	//	Username: loginForm.UserName,
-	//}
-
-	//isPass := utils.CheckPwd(loginForm.Password, userInfo.Salt, userInfo.Password)
-	//fmt.Println(isPass)
-
 }
 
 func Logout(c *gin.Context) {
