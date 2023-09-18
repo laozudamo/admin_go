@@ -1,4 +1,4 @@
-package models
+package system
 
 type CasbinModel struct {
 	PType  string `gorm:"column:p_type" json:"p_type" form:"p_type" description:"策略类型"`

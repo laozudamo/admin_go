@@ -2,7 +2,7 @@ package initialize
 
 import (
 	"admin_go/global"
-	"admin_go/models"
+	"admin_go/models/system"
 	"fmt"
 	"time"
 
@@ -18,12 +18,16 @@ func InitMysqlDB() {
 
 	db, _ := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
+	/*
+		casbin配置
+	*/
+	//e := casbin.NewEnforcer("path/to/basic_model.conf", "path/to/basic_policy.csv")
+
 	// 连接池
 	sqlDB, _ := db.DB()
 	sqlDB.SetMaxIdleConns(10)           // 设置最大空闲连接数
 	sqlDB.SetMaxOpenConns(100)          // 设置最大连接数
 	sqlDB.SetConnMaxLifetime(time.Hour) // 连接池链接设置最大可复用时间
-	db.AutoMigrate(models.SysUser{}, models.SysRole{})
-
+	db.AutoMigrate(system.SysUser{}, system.SysRole{})
 	global.DB = db
 }
