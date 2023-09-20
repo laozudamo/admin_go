@@ -28,6 +28,6 @@ func InitMysqlDB() {
 	sqlDB.SetMaxIdleConns(10)           // 设置最大空闲连接数
 	sqlDB.SetMaxOpenConns(100)          // 设置最大连接数
 	sqlDB.SetConnMaxLifetime(time.Hour) // 连接池链接设置最大可复用时间
-	db.AutoMigrate(system.SysUser{}, system.SysRole{})
+	db.AutoMigrate(system.SysUser{})
 	global.DB = db
 }

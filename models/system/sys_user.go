@@ -5,6 +5,6 @@ import "gorm.io/gorm"
 type SysUser struct {
 	UserName string
 	Password string
-	SysRole  SysRole
+	RoleKey  uint
 	gorm.Model
 }
